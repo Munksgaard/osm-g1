@@ -3,9 +3,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
+#include <assert.h>
 
 void insert(tnode_t **tree, int data)
 {
+    assert(tree != NULL);
+
     if (*tree == NULL) {
         *tree = malloc(sizeof(tnode_t));
         if (tree == NULL) {
@@ -75,6 +78,8 @@ int *to_array(tnode_t *tree)
 
 void insert2(tnode_t2 **tree, void *data, int (*comp)(void *, void *))
 {
+    assert(tree != NULL);
+
     if (*tree == NULL) {
         *tree = malloc(sizeof(tnode_t2));
         if (tree == NULL) {
