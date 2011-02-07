@@ -17,4 +17,4 @@ totalitarian:
 	splint -strict $(SRC_FILES) 
 
 clean:
-	rm -r $(PWD) $(PWD).dSYM
+	rm -r $(PWD)
