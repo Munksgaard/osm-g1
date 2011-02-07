@@ -1,0 +1,86 @@
+\documentclass [10pt,a4paper]{article}
+\usepackage[danish]{babel}
+\usepackage{a4wide}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{ucs}
+\usepackage{graphicx}
+
+\pagestyle{fancy}
+\fancyhead[LO]{Daniel Egeberg \& Philip Munksgaard}
+\fancyhead[RO]{OSM: G1}
+\fancyfoot[CO]{\thepage}
+
+
+\title{G1}
+\author{Daniel Egeberg \& Philip Munksgaard}
+
+\begin{document}
+\maketitle
+
+\section*{Opgave 1}
+
+\subsection*{insert()}
+
+Først kontrollerer vi at vores pegerpeger ikke er \verb+NULL+ og smider en
+fejl hvis den er. Dernæst tjekker vi om vi får et tomt træ ind. Hvis
+det er tilfældet laver vi et nyt træ med de data vi har fået, og
+sætter \verb+lchild+ og \verb+rchild+ til \verb+NULL+. 
+Hvis \verb+*tree+ ikke er \verb+NULL+ kontrollerer vi, hvilken side vores nye
+element skal gemmes i, og kalder insert rekursivt på den respektive
+side.
+
+\subsection*{print\_inorder}
+
+Hvis \verb+tree+ er tomt returnerer vi uden videre, ellers kalder vi
+\verb+print_inorder+ rekursivt på henholdsvis venstre og højre side, og
+printer \verb+data+ ind i mellem.
+
+\subsection*{size}
+
+Hvis \verb+tree+ er \verb+NULL+ returnerer vi nul, ellers returnerer
+vi summen af størrelsen af undertræerne plus en. Vi finder størrelsen
+af undertræerne ved rekursive kald til \verb+size+.
+
+\subsection*{to\_array}
+
+Først kontrollerer vi om \verb+tree+ er \verb+NULL+. Hvis det er
+tilfældet returnerer vi \verb+NULL+, som repræsentation for den tomme
+tabel. Hvis ikke allokerer vi en tabel som til elementerne i
+\verb+tree+. Dernæst bruger vi en hjælpefunktion \verb+_to_array+, som
+rekursivt lægger elementerne fra træet ind i tabellen. Det sker ved at
+den først lægger elementerne i det venstre deltræ ind i tabellen,
+dernæst \verb+data+ og til sidst elementerne i højre deltræ. Vi holder
+styr på indekseringen i tabellen via parameteren \verb+i+.
+
+\section*{Opgave 2}
+
+Hvis vi får et tomt træ ind returnerer vi en tom liste.
+Ellers starter vi med at lave træet om til en tabel ved hjælp af
+\verb+to_array+. Så allokerer vi plads på hoben til det første element
+i vores dobbelthægtede liste og lægger værdien fra det første element
+i tabellen herind. Vi bruger dette første element i vores
+dobbelthægtede liste som vores \verb+head+, som vi altid kan
+tilgå. Hver gang vi skal lægge en ny værdi ind i listen, splejser vi
+den ind imellem \verb+head+ og \verb+head->prev+, således at
+\verb+head->prev+ altid henviser til det sidste element vi har lagt
+ind i listen.
+
+\section*{Opgave 3}
+
+\verb+insert2+ er identisk med \verb+insert+, bortset fra at vi bruger
+\verb+comp+ til at sammenligne elementerne i vores træ.
+
+\section*{Test}
+
+Vi har lavet en fil main.c, som kort tester de forskellige funktioner
+vi har implementeret. Det sker ved at indlæse et træ med værdierne
+$2$, $5$ og $8$ og køre de forskellige funktioner på træet.
+
+I testen af insert2 har vi lavet et nyt træ indeholdende strengene
+\verb+foo+, \verb+bar+ og \verb+baz+ og udskrevet det.
+
+\end{document}
