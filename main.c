@@ -13,6 +13,7 @@ int mystrcmp(void *a, void *b)
 int main()
 {
     // Opgave 1:
+    printf("Tester insert...\n");
     tnode_t *tree = NULL;
     insert(&tree, 5);
     printf("Data: %d\n", tree->data);
@@ -22,22 +23,28 @@ int main()
     printf("Left: %d\n", tree->lchild->data);
     printf("Right: %d\n", tree->rchild->data);
 
+    printf("\nTester print_indorder\n");
     print_inorder(tree);
 
+    printf("\nTester size\n");
     int s = size(tree);
     printf("Size: %d\n", s);
 
+    printf("\nTester to_array\n");
     int *arr = to_array(tree);
     for (int i = 0; i < s; ++i) {
         printf("arr[%d] = %d\n", i, arr[i]);
     }
 
     // Opgave 2:
+    printf("\nTester tree2dlist\n");
     dlist_t *current = tree2dlist(tree);
     for (int i = 0; i < s; ++i) {
         printf("%d\n", current->data);
         current = current->next;
     }
+
+    printf("\n");
 
     current = tree2dlist(tree);
     for (int i = 0; i < s; ++i) {
@@ -46,6 +53,7 @@ int main()
     }
 
     // Opgave 3:
+    printf("\nTester insert2\n");
     tnode_t2 *tree2 = NULL;
     insert2(&tree2, "foo", mystrcmp);
     insert2(&tree2, "bar", mystrcmp);
