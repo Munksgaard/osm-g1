@@ -1,8 +1,10 @@
-#include <stdio.h>
 #include "bintree.h"
 #include "dlist.h"
+
+#include <stdio.h>
 #include <string.h>
 
+// Helper function for testing insert2
 int mystrcmp(void *a, void *b)
 {
     return strcmp((const char*) a, (const char*) b);

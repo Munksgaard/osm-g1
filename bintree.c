@@ -9,6 +9,7 @@ void insert(tnode_t **tree, int data)
 {
     assert(tree != NULL);
 
+    // Empty tree
     if (*tree == NULL) {
         *tree = malloc(sizeof(tnode_t));
         if (tree == NULL) {
@@ -20,9 +21,11 @@ void insert(tnode_t **tree, int data)
         (*tree)->rchild = NULL;
     }
     else {
+        // Insert to the left:
         if (data <= (*tree)->data) {
             insert(&(*tree)->lchild, data);
         }
+        // Insert to the right:
         else {
             insert(&(*tree)->rchild, data);
         }
@@ -49,15 +52,18 @@ int size(tnode_t *tree)
 
 int _to_array(tnode_t *tree, int *arr, int i)
 {
+    // Get elements from left sub-tree:
     if (tree->lchild != NULL)
         i = _to_array(tree->lchild, arr, i);
 
+    // Get current element:
     arr[i++] = tree->data;
 
+    // Get elements from the right sub-tree:
     if (tree->rchild != NULL)
         i = _to_array(tree->rchild, arr, i) + 1;
 
-    return i;
+    return i; // return index
 }
 
 int *to_array(tnode_t *tree)
@@ -80,6 +86,7 @@ void insert2(tnode_t2 **tree, void *data, int (*comp)(void *, void *))
 {
     assert(tree != NULL);
 
+    // Empty tree:
     if (*tree == NULL) {
         *tree = malloc(sizeof(tnode_t2));
         if (tree == NULL) {
@@ -91,9 +98,11 @@ void insert2(tnode_t2 **tree, void *data, int (*comp)(void *, void *))
         (*tree)->rchild = NULL;
     }
     else {
+        // Insert to the left:
         if (comp(data, (*tree)->data) <= 0) {
             insert2(&(*tree)->lchild, data, comp);
         }
+        // Insert to the right:
         else {
             insert2(&(*tree)->rchild, data, comp);
         }
