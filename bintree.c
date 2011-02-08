@@ -61,7 +61,7 @@ int _to_array(tnode_t *tree, int *arr, int i)
 
     // Get elements from the right sub-tree:
     if (tree->rchild != NULL)
-        i = _to_array(tree->rchild, arr, i) + 1;
+        i = _to_array(tree->rchild, arr, i);
 
     return i; // return index
 }
